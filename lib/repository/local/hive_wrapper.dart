@@ -7,7 +7,7 @@ class HiveServices{
   addBoxes(List<Users>? items, String boxName) async {
     print("adding boxes");
     await Hive.box(boxName).clear();
-    final openBox = await Hive.openBox(boxName);
+    final openBox = await Hive.box(boxName);
 
     for (var item in items!) {
       print(item.first_name);

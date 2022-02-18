@@ -10,13 +10,14 @@ import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppRepository.initAppRepository().then((value) {
+  await AppRepository.initAppRepository().then((value) async {
+    final applicationDocumentDir = await getApplicationDocumentsDirectory();
+    await Hive.initFlutter(applicationDocumentDir.path);
+    Hive.registerAdapter(UsersAdapter());
+    await Hive.openBox(Constants.USERS);
     runApp(MyApp(value));
   });
-  final applicationDocumentDir = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(applicationDocumentDir.path);
-  Hive.registerAdapter(UsersAdapter());
-  Hive.openBox(Constants.USERS);
+
 }
 
 class MyApp extends StatelessWidget {

@@ -7,11 +7,12 @@ class HiveRepo {
   Future<CustomResponse> getBoxes(String boxName) async {
     List<Users> boxList = [];
 
-    final openBox = await Hive.openBox(boxName);
+    final openBox = await Hive.box(boxName);
 
     int length = openBox.length;
 
     for (int i = 0; i < length; i++) {
+      print(openBox.getAt(i));
       boxList.add(openBox.getAt(i));
     }
 
