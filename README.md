@@ -1,6 +1,6 @@
 # hive_example
 
-A new Flutter project.
+How to store remote data using hive_flutter and update data if internet is available 
 
 ## Getting Started
 
