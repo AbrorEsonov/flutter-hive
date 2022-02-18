@@ -6,13 +6,12 @@ part 'custom_response.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable()
-class CustomResponse{
+class CustomResponse {
   @HiveField(0)
   final int? page;
 
   @HiveField(1)
   final int? per_page;
-
 
   @HiveField(2)
   final int? total;
@@ -26,10 +25,19 @@ class CustomResponse{
   CustomResponse(
       {this.page, this.per_page, this.total, this.total_pages, this.data});
 
+  CustomResponse copyWith(
+      {int? page, int? per_page, int? total, List<Users>? data}) {
+    return CustomResponse(
+      page: page ?? this.page,
+      per_page: per_page ?? this.per_page,
+      total: total ?? this.total,
+      data: data ?? this.data,
+    );
+  }
+
   factory CustomResponse.fromJson(Map<String, dynamic> json) {
     return _$CustomResponseFromJson(json);
   }
 
   Map<String, dynamic> toJson() => _$CustomResponseToJson(this);
-
 }

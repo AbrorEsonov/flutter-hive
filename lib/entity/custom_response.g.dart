@@ -56,17 +56,16 @@ class CustomResponseAdapter extends TypeAdapter<CustomResponse> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-CustomResponse _$CustomResponseFromJson(Map<String, dynamic> json) {
-  return CustomResponse(
-    page: json['page'] as int?,
-    per_page: json['per_page'] as int?,
-    total: json['total'] as int?,
-    total_pages: json['total_pages'] as int?,
-    data: (json['data'] as List<dynamic>?)
-        ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+CustomResponse _$CustomResponseFromJson(Map<String, dynamic> json) =>
+    CustomResponse(
+      page: json['page'] as int?,
+      per_page: json['per_page'] as int?,
+      total: json['total'] as int?,
+      total_pages: json['total_pages'] as int?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$CustomResponseToJson(CustomResponse instance) =>
     <String, dynamic>{

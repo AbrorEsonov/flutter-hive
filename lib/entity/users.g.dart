@@ -56,15 +56,13 @@ class UsersAdapter extends TypeAdapter<Users> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-Users _$UsersFromJson(Map<String, dynamic> json) {
-  return Users(
-    id: json['id'] as int?,
-    email: json['email'] as String?,
-    first_name: json['first_name'] as String?,
-    last_name: json['last_name'] as String?,
-    avatar: json['avatar'] as String?,
-  );
-}
+Users _$UsersFromJson(Map<String, dynamic> json) => Users(
+      id: json['id'] as int?,
+      email: json['email'] as String?,
+      first_name: json['first_name'] as String?,
+      last_name: json['last_name'] as String?,
+      avatar: json['avatar'] as String?,
+    );
 
 Map<String, dynamic> _$UsersToJson(Users instance) => <String, dynamic>{
       'id': instance.id,
