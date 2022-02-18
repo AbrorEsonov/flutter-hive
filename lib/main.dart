@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_example/entity/users.dart';
 import 'package:hive_example/repository/app_repository.dart';
+import 'package:hive_example/repository/locator/locator.dart';
 import 'package:hive_example/user_data_cubit.dart';
 import 'package:hive_example/utils/constants.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -10,6 +11,7 @@ import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   await AppRepository.initAppRepository().then((value) async {
     final applicationDocumentDir = await getApplicationDocumentsDirectory();
     await Hive.initFlutter(applicationDocumentDir.path);

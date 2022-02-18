@@ -4,12 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:hive_example/entity/custom_response.dart';
 import 'package:hive_example/exception/network_exception.dart';
 import 'package:hive_example/repository/local/hive_wrapper.dart';
+import 'package:hive_example/repository/locator/locator.dart';
 import 'package:hive_example/repository/remote/mixins/base_remote.dart';
 import 'package:hive_example/utils/constants.dart';
 
 mixin UserRemote implements BaseRemote{
-  final HiveServices hiveService = HiveServices();
-
+  final HiveServices hiveService = locator<HiveServices>();
   late Dio dio;
 
   Future<CustomResponse?> getArticles({int? currentPage}) async {
@@ -20,7 +20,7 @@ mixin UserRemote implements BaseRemote{
     queryParameter['per_page'] = 20;
 
     try {
-      Response response = await dio.get(dio.options.baseUrl + '/users?per_page=6',
+      Response response = await dio.get(dio.options.baseUrl + '/users?per_page=12',
           queryParameters: queryParameter);
 
       var data = CustomResponse.fromJson(response.data);

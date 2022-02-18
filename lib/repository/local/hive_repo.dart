@@ -1,8 +1,9 @@
 import 'package:hive/hive.dart';
 import 'package:hive_example/entity/custom_response.dart';
 import 'package:hive_example/entity/users.dart';
-import 'package:hive_example/utils/constants.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class HiveRepo {
   Future<CustomResponse> getBoxes(String boxName) async {
     List<Users> boxList = [];

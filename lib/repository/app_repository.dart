@@ -8,10 +8,11 @@ import 'package:hive_example/utils/app_utils.dart';
 import 'package:hive_example/utils/constants.dart';
 
 import 'local/hive_wrapper.dart';
+import 'locator/locator.dart';
 
 class AppRepository implements AppRemoteSourceInterface{
-  final HiveServices hiveService = HiveServices();
-  final HiveRepo hiveRepo = HiveRepo();
+  final HiveServices hiveService = locator<HiveServices>();
+  final HiveRepo hiveRepo = locator<HiveRepo>();
 
   late Dio dio;
 
